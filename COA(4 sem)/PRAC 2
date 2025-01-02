@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+void decimaltohexadecimal(int n) {
+    char hexadecimal[32]; // Array to store hexadecimal digits
+    int i = 0;
+
+    if (n == 0) {
+        printf("hexadecimal: 0\n");
+        return;
+    }
+
+    while (n > 0) {
+        int remainder = n % 16;
+        if (remainder < 10) {
+            hexadecimal[i] = remainder + '0'; // Convert 0-9 to '0'-'9'
+        } else {
+            hexadecimal[i] = remainder - 10 + 'A'; // Convert 10-15 to 'A'-'F'
+        }
+        n = n / 16;
+        i++;
+    }
+
+    printf("hexadecimal: ");
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%c", hexadecimal[j]); // Print as characters
+    }
+    printf("\n");
+}
+
+int main() {
+    int decimal;
+    printf("Enter a decimal number: ");
+    scanf("%d", &decimal);
+    decimaltohexadecimal(decimal);
+    return 0;
+}
